@@ -11,7 +11,10 @@ $( document ).ready(function() {
      productLoad();
    }
 
-    
+    $("#product-section-1 .product-pack").click(function(){
+      $("#product-section-1 .product-pack").removeClass("active");
+      $(this).addClass("active");
+    });
    
    function checkCookie() {
 
@@ -38,6 +41,32 @@ document.cookie="mobile="+window.mobileCheck();
 }
    
    checkCookie();
+
+
+   $(".product-nav").click(function(){
+    
+    var active = $(".product-column.active").index();
+    
+    var prev = $(this).hasClass('fa-caret-left');
+
+    if (prev){
+      if (active === 0){
+        return false;
+      } else {
+        active--;
+        $(".product-column").removeClass('active');
+        $(".product-column").eq(active).addClass('active');
+      }
+    } else {
+      if (active === 2){
+        return false;
+      } else {
+        active++;
+        $(".product-column").removeClass('active');
+        $(".product-column").eq(active).addClass('active');
+      }
+    }
+   });
 
   //upSession();
   // split_init();
